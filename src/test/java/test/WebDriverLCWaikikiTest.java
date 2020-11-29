@@ -47,6 +47,7 @@ public class WebDriverLCWaikikiTest {
                 goToCart().
                 delivery().
                 trim();
+        System.out.println(del);
         Assert.assertEquals(del, "Бесплатно");
 
     }
