@@ -36,7 +36,7 @@ public class LCWaikikiHomePage extends AbstractPage {
     }
     public LCWaikikiWomenJumpersPage openJumperMenuItem(){
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(jumperMenuItem))
+                .until(ExpectedConditions.visibilityOf(jumperMenuItem))
                 .click();
         return new LCWaikikiWomenJumpersPage(driver);
     }
