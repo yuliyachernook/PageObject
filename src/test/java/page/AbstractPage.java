@@ -14,7 +14,9 @@ public abstract class AbstractPage {
     protected AbstractPage(WebDriver driver)
     {
         this.driver=driver;
-        PageFactory.initElements(driver, this); }
+        PageFactory.initElements(driver, this); 
+        driver.manage.window.maximize();
+    }
 
     protected ExpectedCondition<Boolean> PageLoaded() {
         return new ExpectedCondition<Boolean>() {
