@@ -1,7 +1,10 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -27,15 +30,15 @@ public class WebDriverLCWaikikiTest {
 
     @Test
     public void addOneModelToWishlistTest(){
+
         int p = new LCWaikikiHomePage(driver)
                 .openPage()
                 .openWomenMenuItem()
-                .openJumperMenuItem()
                 .goToSelectedModel()
                 .addSelectedModelToWishlist()
                 .goToWishlist()
                 .getsize();
-
+        System.out.println(p);
         Assert.assertEquals(p, 1);
     }
     @Test
