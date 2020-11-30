@@ -18,8 +18,8 @@ public abstract class AbstractPage {
         this.driver=driver;
         PageFactory.initElements(driver, this);
         driver.manage().window().maximize();
-
     }
+
     protected ExpectedCondition<Boolean> PageLoaded() {
         return new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
