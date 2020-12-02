@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LCWaikikiCoatPage extends AbstractPage {
-    private static final String COATPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/LC-WAIKIKI/Для-женщин/Платье/4680126/1039095";
-    @FindBy(css = "a[size=XL]")
+    private static final String COATPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/XSIDE/Для-женщин/Куртка/4652943/1031381";
+    @FindBy(css = "a[size=L]")
     private WebElement setsize;
 
     @FindBy(id= "pd_add_to_cart")

@@ -2,33 +2,32 @@ package page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LCWaikikiSelectedModelPage extends AbstractPage {
-    private static final String SELECTEDMODELPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/LC-WAIKIKI/Для-женщин/Джемпер/4778926/1038186";
+public class LCWaikikiCardiganPage extends AbstractPage {
+    private static final String SELECTEDMODELPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/XSIDE/Для-женщин/Кардиган/4654470/1033617";
     @FindBy(className = "add-to-favorite-detail")
     private WebElement addSelectedModelToWishlist;
 
     @FindBy(className = "header-favorite-icon")
     private WebElement goToWishlist;
 
-    public LCWaikikiSelectedModelPage(WebDriver driver) {
+    public LCWaikikiCardiganPage(WebDriver driver) {
         super(driver);
     }
 
-    public LCWaikikiSelectedModelPage openPage() {
+    public LCWaikikiCardiganPage openPage() {
         driver.get(SELECTEDMODELPAGE_URL);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(PageLoaded());
         return this;
     }
 
-    public LCWaikikiSelectedModelPage addSelectedModelToWishlist() {
+    public LCWaikikiCardiganPage addSelectedModelToWishlist() {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.elementToBeClickable(addSelectedModelToWishlist))
+                .until(ExpectedConditions.visibilityOf(addSelectedModelToWishlist))
                 .click();
         return this;
     }

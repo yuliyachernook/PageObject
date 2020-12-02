@@ -1,19 +1,14 @@
 package test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import page.LCWaikikiCoatPage;
-import page.LCWaikikiHomePage;
-import page.LCWaikikiSelectedModelPage;
-import page.LCWaikikiWomenJumpersPage;
+import page.LCWaikikiCardiganPage;
 
 public class WebDriverLCWaikikiTest {
     private WebDriver driver;
@@ -31,10 +26,7 @@ public class WebDriverLCWaikikiTest {
     @Test
     public void addOneModelToWishlistTest(){
 
-        int p = new LCWaikikiHomePage(driver)
-                .openPage()
-                .openWomenMenuItem()
-                .goToSelectedModel()
+        int p = new LCWaikikiCardiganPage(driver).openPage()
                 .addSelectedModelToWishlist()
                 .goToWishlist()
                 .getsize();
@@ -51,7 +43,6 @@ public class WebDriverLCWaikikiTest {
                 delivery().
                 trim();
         Assert.assertEquals(del, "Бесплатно");
-
     }
 
 
