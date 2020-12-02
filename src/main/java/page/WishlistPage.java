@@ -8,20 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class LCWaikikiWishlistPage extends AbstractPage {
-    private static final String WISHLISTPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/myfavoritelist";
+public class WishlistPage extends AbstractPage {
     @FindBy(className = "favorite-item")
     private List<WebElement> favoriteItemsList;
 
-    public LCWaikikiWishlistPage(WebDriver driver) {
+    public WishlistPage(WebDriver driver) {
         super(driver);
-    }
-
-    public LCWaikikiWishlistPage openPage() {
-        driver.get(WISHLISTPAGE_URL);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(PageLoaded());
-        return this;
     }
 
     public int getsize() {

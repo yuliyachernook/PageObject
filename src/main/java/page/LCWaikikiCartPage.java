@@ -19,9 +19,8 @@ public class LCWaikikiCartPage extends AbstractPage {
     }
 
     public LCWaikikiCartPage openPage() {
-        driver.get(CARTPAGE_URL);
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(PageLoaded());
+                .until(ExpectedConditions.visibilityOf(delivery));
         return this;
     }
     public String delivery() {

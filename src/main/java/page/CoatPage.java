@@ -1,15 +1,17 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LCWaikikiCoatPage extends AbstractPage {
-    private static final String COATPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/XSIDE/Для-женщин/Куртка/4652943/1031381";
-    @FindBy(css = "a[size=L]")
-    private WebElement setsize;
+public class CoatPage extends AbstractPage {
+    private static final String COATPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/XSIDE/Для-женщин/Пальто/4650524/1048121";
+
+    private static String sizeTemplate = "a[size=$]";
+    private static String colorTemplate = "//div[@class=\"color-box\"]/div[@title=\"$\"]";
 
     @FindBy(id= "pd_add_to_cart")
     private WebElement addToCart;
@@ -17,25 +19,30 @@ public class LCWaikikiCoatPage extends AbstractPage {
     @FindBy(className= "header-bag-icon")
     private WebElement goToCart;
 
-    public LCWaikikiCoatPage(WebDriver driver) {
+    public CoatPage(WebDriver driver) {
         super(driver);
     }
 
-    public LCWaikikiCoatPage openPage() {
+    public CoatPage openPage() {
         driver.get(COATPAGE_URL);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(PageLoaded());
         return this;
     }
 
-    public LCWaikikiCoatPage setSize() {
+    public CoatPage setSize(String size) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.visibilityOf(setsize))
-                .click();
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(sizeTemplate.replace("$", size)))).
+                click();
         return this;
     }
 
-    public LCWaikikiCoatPage addToCart() {
+    public CoatPage setColor(String color) {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(colorTemplate.replace("$", color)))).
+                click();
+        return this;
+    }
+
+    public CoatPage addToCart() {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.visibilityOf(addToCart))
                 .click();

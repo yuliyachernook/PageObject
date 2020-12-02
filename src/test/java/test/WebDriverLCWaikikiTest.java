@@ -7,8 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import page.LCWaikikiCoatPage;
-import page.LCWaikikiCardiganPage;
+import page.CoatPage;
+import page.HomePage;
 
 public class WebDriverLCWaikikiTest {
     private WebDriver driver;
@@ -19,35 +19,39 @@ public class WebDriverLCWaikikiTest {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void createDriver() {
+    public void driverSetup() {
         driver = new ChromeDriver();
     }
 
     @Test
-    public void addOneModelToWishlistTest(){
-
-        int p = new LCWaikikiCardiganPage(driver).openPage()
+    public void addOneModelToWishlistTest() {
+        int favoriteItemsListSize = new HomePage(driver)
+                .openPage()
+                .searchForModel("0WDF15Z8")
+                .goToModel()
                 .addSelectedModelToWishlist()
                 .goToWishlist()
                 .getsize();
-        System.out.println(p);
-        Assert.assertEquals(p, 1);
+        System.out.println(favoriteItemsListSize);
+
+        Assert.assertEquals(favoriteItemsListSize, 1);
     }
     @Test
     public void freeDeliveryTest(){
-        String del = new LCWaikikiCoatPage(driver).
+        String сostOfDelivery = new CoatPage(driver).
                 openPage().
-                setSize().
+                setColor("Grey Melange").
+                setSize("M").
                 addToCart().
                 goToCart().
                 delivery().
                 trim();
-        Assert.assertEquals(del, "Бесплатно");
+        Assert.assertEquals(сostOfDelivery, "Бесплатно");
     }
 
-
     @AfterMethod
-    public void closeDriver(){
-        driver.close();
+    public void driverTearDown(){
+        driver.quit();
+        driver = null;;
     }
 }
