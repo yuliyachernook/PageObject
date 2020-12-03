@@ -1,7 +1,5 @@
 package test;
 
-import org.assertj.core.api.JUnitSoftAssertions;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -15,6 +13,7 @@ import page.CoatPage;
 import page.HomePage;
 
 public class WebDriverLCWaikikiTest {
+
     private WebDriver driver;
 
     @BeforeTest
@@ -49,8 +48,8 @@ public class WebDriverLCWaikikiTest {
                 addModelToCart().
                 goToCart();
         
-        softly.assertEquals(cartPage.getpreliminaryProvision(), 99.95);
-        softly.assertTrue(cartPage.getpreliminaryProvision() > 70, "A preliminary provision is less than 70 BYN.");
+        softly.assertEquals(cartPage.getPreliminaryProvision(), 99.95);
+        softly.assertTrue(cartPage.getPreliminaryProvision() > 70, "A preliminary provision is less than 70 BYN.");
         softly.assertEquals(cartPage.getCostOfDelivery(), "Бесплатно");
         softly.assertAll();
     }
