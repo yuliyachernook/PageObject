@@ -38,6 +38,7 @@ public class WebDriverLCWaikikiTest {
 
         Assert.assertEquals(favoriteItemsListSize, 1);
     }
+    
     @Test
     public void freeDeliveryWhenOrderAmountIsMoreThanSeventyTest(){
         SoftAssert softly = new SoftAssert();
