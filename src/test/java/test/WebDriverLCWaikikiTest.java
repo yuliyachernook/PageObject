@@ -29,10 +29,9 @@ public class WebDriverLCWaikikiTest {
                 .openPage()
                 .searchForModel("0WDF15Z8")
                 .goToModel()
-                .addSelectedModelToWishlist()
+                .addModelToWishlist()
                 .goToWishlist()
-                .getsize();
-        System.out.println(favoriteItemsListSize);
+                .getFavoriteItemsListSize();
 
         Assert.assertEquals(favoriteItemsListSize, 1);
     }
@@ -42,10 +41,11 @@ public class WebDriverLCWaikikiTest {
                 openPage().
                 setColor("Grey Melange").
                 setSize("M").
-                addToCart().
+                addModelToCart().
                 goToCart().
-                delivery().
+                getCostOfDelivery().
                 trim();
+
         Assert.assertEquals(сostOfDelivery, "Бесплатно");
     }
 

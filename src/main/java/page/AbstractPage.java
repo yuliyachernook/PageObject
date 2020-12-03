@@ -1,21 +1,17 @@
 package page;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-
-import java.util.Set;
 
 public abstract class AbstractPage {
     protected WebDriver driver;
-
-    protected static final int WAIT_TIMEOUT_SECONDS=30;
+    protected static final String HOMEPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY";
+    protected static final String COATPAGE_URL = "https://www.lcwaikiki.by/ru-RU/BY/product/XSIDE/Для-женщин/Пальто/4650524/1048121";
+    protected static final int WAIT_TIMEOUT_SECONDS=15;
 
     protected AbstractPage(WebDriver driver)
     {
         this.driver=driver;
-        PageFactory.initElements(driver, this);
         driver.manage().window().maximize();
     }
 }

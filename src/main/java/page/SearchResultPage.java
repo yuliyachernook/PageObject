@@ -1,24 +1,19 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
+import wait.WaitForElementMethods;
 
 public class SearchResultPage extends AbstractPage {
-    @FindBy(className = "a_model_item")
-    private List<WebElement> searchResultList;
+    private final By searchResultListLocator = By.className("a_model_item");
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
     }
 
     public CardiganPage goToModel() {
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.visibilityOfAllElements(searchResultList)).get(1).click();
+        WaitForElementMethods.waitForElementsLocatedBy(driver,
+                WAIT_TIMEOUT_SECONDS, searchResultListLocator).get(1).click();
         return new CardiganPage(driver);
     }
 }
