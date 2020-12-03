@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import page.CartPage;
 import page.CoatPage;
 import page.HomePage;
@@ -39,8 +40,8 @@ public class WebDriverLCWaikikiTest {
         Assert.assertEquals(favoriteItemsListSize, 1);
     }
     @Test
-    public void freeDeliveryTest(){
-        SoftAssertions softly = new SoftAssertions();
+    public void freeDeliveryWhenOrderAmountIsMoreThanSeventyTest(){
+        SoftAssert softly = new SoftAssert();
         CartPage cartPage = new CoatPage(driver).
                 openPage().
                 setColor("Grey Melange").
@@ -48,8 +49,9 @@ public class WebDriverLCWaikikiTest {
                 addModelToCart().
                 goToCart();
         
-        softly.assertThat(cartPage.getpreliminaryProvision()).isEqualTo("99,95 BYN");
-        softly.assertThat(cartPage.getCostOfDelivery()).isEqualTo("Бесплатно");
+        softly.assertEquals(cartPage.getpreliminaryProvision(), 99.95);
+        softly.assertTrue(cartPage.getpreliminaryProvision() > 70, "A preliminary provision is less than 70 BYN.");
+        softly.assertEquals(cartPage.getCostOfDelivery(), "Бесплатно");
         softly.assertAll();
     }
 
