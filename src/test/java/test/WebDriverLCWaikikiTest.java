@@ -41,12 +41,12 @@ public class WebDriverLCWaikikiTest {
     @Test
     public void freeDeliveryWhenOrderAmountIsMoreThanSeventyTest(){
         SoftAssert softly = new SoftAssert();
-        CartPage cartPage = new CoatPage(driver).
-                openPage().
-                setColor("Grey Melange").
-                setSize("M").
-                addModelToCart().
-                goToCart();
+        CartPage cartPage = new CoatPage(driver)
+                .openPage()
+                .setColor("Grey Melange")
+                .setSize("M")
+                .addModelToCart()
+                .goToCart();
         
         softly.assertEquals(cartPage.getPreliminaryProvision(), 99.95);
         softly.assertTrue(cartPage.getPreliminaryProvision() > 70, "A preliminary provision is less than 70 BYN.");
