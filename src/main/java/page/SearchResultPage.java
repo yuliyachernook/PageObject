@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import wait.WaitForElementMethods;
 
 public class SearchResultPage extends AbstractPage {
+
     private final By searchResultListLocator = By.className("a_model_item");
 
     public SearchResultPage(WebDriver driver) {

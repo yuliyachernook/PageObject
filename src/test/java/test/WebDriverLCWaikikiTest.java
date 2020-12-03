@@ -1,5 +1,7 @@
 package test;
 
+import org.assertj.core.api.JUnitSoftAssertions;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -7,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import page.CartPage;
 import page.CoatPage;
 import page.HomePage;
 
@@ -37,16 +40,17 @@ public class WebDriverLCWaikikiTest {
     }
     @Test
     public void freeDeliveryTest(){
-        String сostOfDelivery = new CoatPage(driver).
+        SoftAssertions softly = new SoftAssertions();
+        CartPage cartPage = new CoatPage(driver).
                 openPage().
                 setColor("Grey Melange").
                 setSize("M").
                 addModelToCart().
-                goToCart().
-                getCostOfDelivery().
-                trim();
-
-        Assert.assertEquals(сostOfDelivery, "Бесплатно");
+                goToCart();
+        
+        softly.assertThat(cartPage.getpreliminaryProvision()).isEqualTo("99,95 BYN");
+        softly.assertThat(cartPage.getCostOfDelivery()).isEqualTo("Бесплатно");
+        softly.assertAll();
     }
 
     @AfterMethod

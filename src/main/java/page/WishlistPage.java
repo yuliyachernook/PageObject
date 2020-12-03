@@ -11,6 +11,7 @@ import wait.WaitForElementMethods;
 import java.util.List;
 
 public class WishlistPage extends AbstractPage {
+
     private final By favoriteItemsListLocator = By.className("favorite-item");
 
     public WishlistPage(WebDriver driver) {

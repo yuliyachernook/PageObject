@@ -6,11 +6,11 @@ import wait.WaitForElementMethods;
 
 public class CoatPage extends AbstractPage {
 
-    private static String sizeTemplate = "a[size=$]";
-    private static String colorTemplate = "//div[@class=\"color-box\"]/div[@title=\"$\"]";
-
     private final By addToCartLocator = By.id("pd_add_to_cart");
     private final By goToCartLocator = By.className("header-bag-icon");
+
+    private String sizeTemplate = "a[size=$]";
+    private String colorTemplate = "//div[@class=\"color-box\"]/div[@title=\"$\"]";
 
     public CoatPage(WebDriver driver) {
         super(driver);
